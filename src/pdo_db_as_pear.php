@@ -2,13 +2,28 @@
 
 namespace pck\pdo_db_as_pear;
 
-define('DB_AUTOQUERY_INSERT', 1);
-define('DB_AUTOQUERY_UPDATE', 2);
-define('DB_FETCHMODE_DEFAULT', 0);
-define('DB_FETCHMODE_ORDERED', 1);
-define('DB_FETCHMODE_ASSOC', 2);
-define('DB_FETCHMODE_OBJECT', 3);
-define('DB_OK', 1);
+if (!defined('DB_AUTOQUERY_INSERT')) {
+    define('DB_AUTOQUERY_INSERT', 1);
+}
+if (!defined('DB_AUTOQUERY_UPDATE')) {
+    define('DB_AUTOQUERY_UPDATE', 2);
+}
+if (!defined('DB_FETCHMODE_DEFAULT')) {
+    define('DB_FETCHMODE_DEFAULT', 0);
+}
+if (!defined('DB_FETCHMODE_ORDERED')) {
+    define('DB_FETCHMODE_ORDERED', 1);
+}
+if (!defined('DB_FETCHMODE_ASSOC')) {
+    define('DB_FETCHMODE_ASSOC', 2);
+}
+if (!defined('DB_FETCHMODE_OBJECT')) {
+    define('DB_FETCHMODE_OBJECT', 3);
+}
+if (!defined('DB_OK')) {
+    define('DB_OK', 1);
+}
+
 
 class pdo_db_as_pear extends \PDO
 {
