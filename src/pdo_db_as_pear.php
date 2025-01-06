@@ -30,7 +30,7 @@ class pdo_db_as_pear extends \PDO
     public function __construct(string $dsn, string $username = '', string $password = '', array $options = array())
     {
         parent::__construct($dsn, $username, $password, $options);
-        $this->setAttribute(\PDO::ATTR_STATEMENT_CLASS, array('pdo_statement_as_pear', array($this)));
+        $this->setAttribute(\PDO::ATTR_STATEMENT_CLASS, array('pck\pdo_db_as_pear\pdo_statement_as_pear', array($this)));
         return $this;
     }
 
