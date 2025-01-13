@@ -34,6 +34,14 @@ class pdo_db_as_pear extends \PDO
         return $this;
     }
 
+    /**
+     * Runs a query and returns the first value of the first row.
+     * 
+     * @param string $query The query to run.
+     * @param array $params The parameters to bind to the query.
+     * 
+     * @return mixed|pdo_statement_as_pear The first value of the first row.
+     */
     public function getOne($query, $params = array())
     {
         $stmt = $this->prepare($query);
@@ -49,6 +57,15 @@ class pdo_db_as_pear extends \PDO
         }
     }
 
+    /** 
+     * Runs a query and returns the results as an associative array.
+     * 
+     * @param string $query The query to run.
+     * @param bool $force_array If true, the values will be returned as arrays, even if there is only one value.
+     * @param array $params The parameters to bind to the query.
+     * 
+     * @return array|pdo_statement_as_pear The results of the query (pdo_statement if query fails).
+     */
     public function getAssoc($query, $force_array = false, $params = array(), $fetch_mode = \PDO::FETCH_BOTH)
     {
         $stmt = $this->prepare($query);
@@ -74,6 +91,15 @@ class pdo_db_as_pear extends \PDO
         return $assoc_results;
     }
 
+    /**
+     * Runs a query and returns the values of a single column.
+     * 
+     * @param string $query The query to run.
+     * @param int $column_number The column number to return.
+     * @param array $params The parameters to bind to the query.
+     * 
+     * @return array|pdo_statement_as_pear The values of the column.
+     */
     public function getCol($query, $column_number = 0, $params = array())
     {
         $stmt = $this->prepare($query);
@@ -84,6 +110,14 @@ class pdo_db_as_pear extends \PDO
         return $stmt->fetchAll(\PDO::FETCH_COLUMN, $column_number);
     }
 
+    /**
+     * Runs a query and returns all rows.
+     * 
+     * @param string $query The query to run.
+     * @param array $params The parameters to bind to the query.
+     * 
+     * @return array|pdo_statement_as_pear The results of the query.
+     */
     public function getAll($query, $params = array())
     {
         $stmt = $this->prepare($query);
@@ -94,6 +128,14 @@ class pdo_db_as_pear extends \PDO
         return $stmt->fetchAll();
     }
 
+    /**
+     * Runs a query and returns the first row.
+     * 
+     * @param string $query The query to run.
+     * @param array $params The parameters to bind to the query.
+     * 
+     * @return array|pdo_statement_as_pear The first row of the query.
+     */
     public function getRow($query, $params = array())
     {
         $stmt = $this->prepare($query);
@@ -104,11 +146,27 @@ class pdo_db_as_pear extends \PDO
         return $stmt->fetch();
     }
 
+    /**
+     * Runs a query.
+     * 
+     * @param string $query The query to run.
+     * @param array $params The parameters to bind to the query.
+     * 
+     * @return pdo_statement_as_pear The results of the query.
+     */
     public function run_query($query, $params = array())
     {
         return $this->runQuery($query, $params);
     }
 
+    /**
+     * Runs a query.
+     * 
+     * @param string $query The query to run.
+     * @param array $params The parameters to bind to the query.
+     * 
+     * @return pdo_statement_as_pear The results of the query.
+     */
     public function runQuery($query, $params = array())
     {
         $stmt = $this->prepare($query);
